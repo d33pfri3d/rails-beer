@@ -99,9 +99,7 @@
       <ul class="list-unstyled">
         <% @styles.each do |style|%>
         <li>
-          <a href="#" class="label label-primary">
-            <%= style.name %>  
-          </a>
+          <%= link_to style.name, beers_path(filter: style.name), class: 'label label-primary' %>
         </li>
         <% end %>
       </ul>

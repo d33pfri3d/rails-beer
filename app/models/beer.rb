@@ -5,9 +5,12 @@ class Beer < ActiveRecord::Base
 
 	scope :tasted, ->{ where.not(tasted_on: nil) }
 	scope :recent, ->{ where('tasted_on > ?', 2.days.ago) }
+	scope :filter, ->(name){
+		joins(:style).where('styles.name = ?', name) if name.present?
+	}
 
 	# A scope always returns a collection, a class method does not.
-	scope :search, ->(keyword){ where('keywords LIKE ?', "%#{keyword.downcase}%") if keyword.present? }
+	scope :search, ->(keyword){where('keywords LIKE ?', "%#{keyword.downcase}%") if keyword.present? }
 
 
 	before_save :set_keywords

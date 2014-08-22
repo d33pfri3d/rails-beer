@@ -4,7 +4,9 @@ class BeersController < ApplicationController
   # GET /beers
   # GET /beers.json
   def index
-    @beers = Beer.search(params[:keyword])
+    @beers = Beer.includes(:style).
+      search(params[:keyword]).
+      filter(params[:filter])
     @styles = Style.all
   end
 

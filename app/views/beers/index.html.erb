@@ -23,7 +23,7 @@
     </div>
   </div>
 
-   <div class='col-sm-12 book-form'>
+   <div class='col-sm-12 beer-form'>
     <p>
       <%= form_for(Beer.new, remote: true,
                    html: { class: 'horizontal-form' }) do |f| %>
@@ -64,7 +64,7 @@
 
   <div class="row">
     <div class="col-sm-8">
-      <ul class="list-unstyled book-list">
+      <ul class="list-unstyled beer-list">
       <% @beers.each do |beer| %>
         <li class="row rating-<%= beer.rating %>">
           <div class="col-sm-3">
@@ -83,13 +83,28 @@
                 <%= beer.description %>
               </p>
             </div>
+
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="label label-primary"> <%= beer.style.name %></a>
+              </li>
+            </ul>
           </div>
         </li>
         <% end %>
       </ul>
     </div>
     <div class="col-sm-4">
-      <h2>Types</h2>
+      <h2>Styles</h2>
+      <ul class="list-unstyled">
+        <% @styles.each do |style|%>
+        <li>
+          <a href="#" class="label label-primary">
+            <%= style.name %>  
+          </a>
+        </li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </div>

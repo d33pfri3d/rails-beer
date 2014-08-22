@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140822085549) do
+ActiveRecord::Schema.define(version: 20140822104106) do
 
   create_table "beers", force: true do |t|
     t.string   "name"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 20140822085549) do
     t.integer  "rating"
     t.date     "tasted_on"
     t.text     "keywords"
+    t.integer  "style_id"
+  end
+
+  add_index "beers", ["style_id"], name: "index_beers_on_style_id"
+
+  create_table "styles", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

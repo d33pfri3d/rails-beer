@@ -1,29 +1,13 @@
 <div class="container">
-  <h1>Beers</h1>
-
-  <ol class="breadcrumb">
-    <li class="active">
-      Beers
-    </li>
-  </ol>
-
   <div class="row">
     <div class="col-sm-12">
-      <p>
-        <form>
-          <legend>Search</legend>
-          <div class='col-xs-4'>
-            <input type='text' class='form-control' value='<%= params[:keyword]%>' name='keyword' placeholder='Keyword' >
-          </div>
-        </form>
-      </p>
       <p class='pull-right'>
         <a href='#' id='show-form' class='btn btn-primary'>New Beer</a>
       </p>
     </div>
   </div>
 
-   <div class='col-sm-12 beer-form'>
+  <div class='col-sm-12 beer-form'>
     <p>
       <%= form_for(Beer.new, remote: true,
                    html: { class: 'horizontal-form' }) do |f| %>
@@ -44,6 +28,17 @@
           <%= f.text_field :image, class: 'form-control', placeholder: 'Image URL' %>
         </div>
 
+        <div class="form-group">
+          <legend>Style</legend>
+          <%= 
+            f.select :style_id,
+            @styles.map{ |s|
+              [s.name, s.id]
+            },
+            {}
+          %>
+        </div>
+
         <div class='form-group'>
           <legend>Rating</legend>
           <% (1..5).each do |rating| %>
@@ -59,7 +54,8 @@
       </div>
       <% end %>
     </p>
-  </div>
+
+</div>
 
 
   <div class="row">

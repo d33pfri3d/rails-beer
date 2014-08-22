@@ -65,33 +65,7 @@
   <div class="row">
     <div class="col-sm-8">
       <ul class="list-unstyled beer-list">
-      <% @beers.each do |beer| %>
-        <li class="row rating-<%= beer.rating %>">
-          <div class="col-sm-3">
-            <a href="#" target="_blank">
-              <%= beer_image(beer.image) %>
-            </a>
-            <p class="text-center rating"><strong><%= beer.rating %></strong>/5</p>
-          </div>
-
-          <div class="col-sm-9">
-            <h3><a href="#"><%= beer.name %></a></h3>
-            <p class="text-muted"><em>Brewed by <%= beer.brewery %></em></p>
-
-            <div>
-              <p>
-                <%= beer.description %>
-              </p>
-            </div>
-
-            <ul class="list-unstyled">
-              <li>
-                <a href="#" class="label label-primary"> <%= beer.style.name %></a>
-              </li>
-            </ul>
-          </div>
-        </li>
-        <% end %>
+        <%= render @beers %>
       </ul>
     </div>
     <div class="col-sm-4">

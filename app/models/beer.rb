@@ -1,7 +1,10 @@
 class Beer < ActiveRecord::Base
 
-	def tasted?
-		tasted_on.present?
-	end
+	scope :tasted, ->{ where.not(tasted_on: nil) }
+	
+
+	# def tasted?
+	# 	tasted_on.present?
+	# end
 
 end

@@ -11,6 +11,7 @@ class Beer < ActiveRecord::Base
 
 	# A scope always returns a collection, a class method does not.
 	scope :search, ->(keyword){where('keywords LIKE ?', "%#{keyword.downcase}%") if keyword.present? }
+	scope :find_by_name, ->(name){ where('name =?', name) }
 
 
 	before_save :set_keywords

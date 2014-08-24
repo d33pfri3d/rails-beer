@@ -1,5 +1,5 @@
 class BeersController < ApplicationController
-  before_action :set_beer, only: [:show, :edit, :update, :destroy]
+  before_action :set_beer, only: [:edit, :update, :destroy]
 
   # GET /beers
   # GET /beers.json
@@ -13,6 +13,7 @@ class BeersController < ApplicationController
   # GET /beers/1
   # GET /beers/1.json
   def show
+    @beer = Beer.find_by_name(params[:name])
   end
 
   # GET /beers/new
